@@ -3,12 +3,13 @@ using System.Collections.Generic;
 
 class MetroManilaCommuteApp
 {
-    static Dictionary<string, List<string>> trainLines = new Dictionary<string, List<string>>();
+    static Dictionary<string, Dictionary<string, List<string>>> trainLines = new Dictionary<string, Dictionary<string, List<string>>>();
 
     static void Main()
     {
+        bool exit = false;
         InitializeTrainLines();
-        while (true)
+        while (exit != true)
         {
             Console.Clear();
             Console.WriteLine("Metro Manila Train Commute App");
@@ -45,6 +46,7 @@ class MetroManilaCommuteApp
                     ShowTourGuide(station);
                     break;
                 case "5":
+                    exit = true;
                     return;
                 default:
                     Console.WriteLine("Invalid choice. Press any key to continue...");
@@ -56,9 +58,18 @@ class MetroManilaCommuteApp
 
     static void InitializeTrainLines()
     {
-        trainLines["LRT-2"] = new List<string> { "Recto", "Legarda", "Pureza", "V. Mapa", "J. Ruiz", "Gilmore", "Betty Go", "Cubao", "Anonas", "Katipunan", "Santolan", "Marikina", "Antipolo" };
-        trainLines["MRT-3"] = new List<string> { "North Avenue", "Quezon Avenue", "GMA Kamuning", "Araneta-Cubao", "Santolan-Annapolis", "Ortigas", "Shaw Boulevard", "Boni", "Guadalupe", "Buendia", "Ayala", "Magallanes", "Taft Avenue" };
+        trainLines["MRT-3"] = new Dictionary<string, List<string>>
+    {
+        { "StationA", new List<string> { "Landmark1", "Landmark2" } },
+        { "StationB", new List<string> { "Landmark3", "Landmark4" } },
+        { "StationC", new List<string> { "Landmark5", "Landmark6" } }
+    };
 
+        trainLines["LRT-2"] = new Dictionary<string, List<string>>
+    {
+        { "StationD", new List<string> { "Landmark7", "Landmark8" } },
+        { "StationE", new List<string> { "Landmark9", "Landmark10" } }
+    };
     }
 
     static void DisplayTrainMap()
