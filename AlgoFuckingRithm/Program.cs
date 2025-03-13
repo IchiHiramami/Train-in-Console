@@ -34,9 +34,13 @@ class MetroManilaCommuteApp
                     Console.Write("Start Journey?");
                     string input = Console.ReadLine();
                     if (input == "Y")
+                    {
                         Console.WriteLine("Starting Journey Tracking");
-                    else
-                        return;
+                        TrackProgress(start, destination);
+                    }
+
+                    else { return; }
+
                     break;
                 case "3":
                     Console.Write("Enter a station to see nearby landmarks: ");
