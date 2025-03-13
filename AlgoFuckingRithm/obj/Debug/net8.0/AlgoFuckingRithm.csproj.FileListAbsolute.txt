@@ -1,0 +1,14 @@
+C:\Users\04joh\source\repos\AlgoFuckingRithm\AlgoFuckingRithm\bin\Debug\net8.0\AlgoFuckingRithm.exe
+C:\Users\04joh\source\repos\AlgoFuckingRithm\AlgoFuckingRithm\bin\Debug\net8.0\AlgoFuckingRithm.deps.json
+C:\Users\04joh\source\repos\AlgoFuckingRithm\AlgoFuckingRithm\bin\Debug\net8.0\AlgoFuckingRithm.runtimeconfig.json
+C:\Users\04joh\source\repos\AlgoFuckingRithm\AlgoFuckingRithm\bin\Debug\net8.0\AlgoFuckingRithm.dll
+C:\Users\04joh\source\repos\AlgoFuckingRithm\AlgoFuckingRithm\bin\Debug\net8.0\AlgoFuckingRithm.pdb
+C:\Users\04joh\source\repos\AlgoFuckingRithm\AlgoFuckingRithm\obj\Debug\net8.0\AlgoFuckingRithm.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\04joh\source\repos\AlgoFuckingRithm\AlgoFuckingRithm\obj\Debug\net8.0\AlgoFuckingRithm.AssemblyInfoInputs.cache
+C:\Users\04joh\source\repos\AlgoFuckingRithm\AlgoFuckingRithm\obj\Debug\net8.0\AlgoFuckingRithm.AssemblyInfo.cs
+C:\Users\04joh\source\repos\AlgoFuckingRithm\AlgoFuckingRithm\obj\Debug\net8.0\AlgoFuckingRithm.csproj.CoreCompileInputs.cache
+C:\Users\04joh\source\repos\AlgoFuckingRithm\AlgoFuckingRithm\obj\Debug\net8.0\AlgoFuckingRithm.dll
+C:\Users\04joh\source\repos\AlgoFuckingRithm\AlgoFuckingRithm\obj\Debug\net8.0\refint\AlgoFuckingRithm.dll
+C:\Users\04joh\source\repos\AlgoFuckingRithm\AlgoFuckingRithm\obj\Debug\net8.0\AlgoFuckingRithm.pdb
+C:\Users\04joh\source\repos\AlgoFuckingRithm\AlgoFuckingRithm\obj\Debug\net8.0\AlgoFuckingRithm.genruntimeconfig.cache
+C:\Users\04joh\source\repos\AlgoFuckingRithm\AlgoFuckingRithm\obj\Debug\net8.0\ref\AlgoFuckingRithm.dll

@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F7DC3FA6-1079-47B7-9EE6-4E990149E3B8}|AlgoFuckingRithm\\AlgoFuckingRithm.csproj|c:\\users\\04joh\\source\\repos\\algofuckingrithm\\algofuckingrithm\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F7DC3FA6-1079-47B7-9EE6-4E990149E3B8}|AlgoFuckingRithm\\AlgoFuckingRithm.csproj|solutionrelative:algofuckingrithm\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\AlgoFuckingRithm\\Program.cs",
+              "RelativeDocumentMoniker": "AlgoFuckingRithm\\Program.cs",
+              "ToolTip": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\AlgoFuckingRithm\\Program.cs",
+              "RelativeToolTip": "AlgoFuckingRithm\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T09:19:25.645Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
