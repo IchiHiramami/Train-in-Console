@@ -15,9 +15,8 @@ class MetroManilaCommuteApp
             Console.WriteLine("Metro Manila Train Commute App");
             Console.WriteLine("1. Display Train Map");
             Console.WriteLine("2. Plan Commute");
-            Console.WriteLine("3. Track Progress");
-            Console.WriteLine("4. Show Tour Guide");
-            Console.WriteLine("5. Exit");
+            Console.WriteLine("3. Show Tour Guide");
+            Console.WriteLine("4. Exit");
             Console.Write("Choose an option: ");
 
             string choice = Console.ReadLine();
@@ -32,20 +31,19 @@ class MetroManilaCommuteApp
                     Console.Write("Enter destination station: ");
                     string destination = Console.ReadLine();
                     PlanCommute(start, destination);
+                    Console.Write("Start Journey?");
+                    string input = Console.ReadLine();
+                    if (input == "Y")
+                        Console.WriteLine("Starting Journey Tracking");
+                    else
+                        return;
                     break;
                 case "3":
-                    Console.Write("Enter your current station: ");
-                    string currentStation = Console.ReadLine();
-                    Console.Write("Enter your destination station: ");
-                    string dest = Console.ReadLine();
-                    TrackProgress(currentStation, dest);
-                    break;
-                case "4":
                     Console.Write("Enter a station to see nearby landmarks: ");
                     string station = Console.ReadLine();
                     ShowTourGuide(station);
                     break;
-                case "5":
+                case "4":
                     exit = true;
                     return;
                 default:
