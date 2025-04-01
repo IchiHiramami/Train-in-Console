@@ -12,3 +12,4 @@ C:\Users\04joh\source\repos\AlgoFuckingRithm\AlgoFuckingRithm\obj\Debug\net8.0\r
 C:\Users\04joh\source\repos\AlgoFuckingRithm\AlgoFuckingRithm\obj\Debug\net8.0\AlgoFuckingRithm.pdb
 C:\Users\04joh\source\repos\AlgoFuckingRithm\AlgoFuckingRithm\obj\Debug\net8.0\AlgoFuckingRithm.genruntimeconfig.cache
 C:\Users\04joh\source\repos\AlgoFuckingRithm\AlgoFuckingRithm\obj\Debug\net8.0\ref\AlgoFuckingRithm.dll
+C:\Users\04joh\source\repos\AlgoFuckingRithm\AlgoFuckingRithm\obj\Debug\net8.0\AlgoFuckingRithm.sourcelink.json
