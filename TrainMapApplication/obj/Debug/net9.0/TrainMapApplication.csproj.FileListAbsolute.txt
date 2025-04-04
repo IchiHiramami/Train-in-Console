@@ -1,0 +1,15 @@
+C:\Users\04joh\source\repos\AlgoFuckingRithm\TrainMapApplication\bin\Debug\net9.0\TrainMapApplication.exe
+C:\Users\04joh\source\repos\AlgoFuckingRithm\TrainMapApplication\bin\Debug\net9.0\TrainMapApplication.deps.json
+C:\Users\04joh\source\repos\AlgoFuckingRithm\TrainMapApplication\bin\Debug\net9.0\TrainMapApplication.runtimeconfig.json
+C:\Users\04joh\source\repos\AlgoFuckingRithm\TrainMapApplication\bin\Debug\net9.0\TrainMapApplication.dll
+C:\Users\04joh\source\repos\AlgoFuckingRithm\TrainMapApplication\bin\Debug\net9.0\TrainMapApplication.pdb
+C:\Users\04joh\source\repos\AlgoFuckingRithm\TrainMapApplication\obj\Debug\net9.0\TrainMapApplication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\04joh\source\repos\AlgoFuckingRithm\TrainMapApplication\obj\Debug\net9.0\TrainMapApplication.AssemblyInfoInputs.cache
+C:\Users\04joh\source\repos\AlgoFuckingRithm\TrainMapApplication\obj\Debug\net9.0\TrainMapApplication.AssemblyInfo.cs
+C:\Users\04joh\source\repos\AlgoFuckingRithm\TrainMapApplication\obj\Debug\net9.0\TrainMapApplication.csproj.CoreCompileInputs.cache
+C:\Users\04joh\source\repos\AlgoFuckingRithm\TrainMapApplication\obj\Debug\net9.0\TrainMapApplication.sourcelink.json
+C:\Users\04joh\source\repos\AlgoFuckingRithm\TrainMapApplication\obj\Debug\net9.0\TrainMapApplication.dll
+C:\Users\04joh\source\repos\AlgoFuckingRithm\TrainMapApplication\obj\Debug\net9.0\refint\TrainMapApplication.dll
+C:\Users\04joh\source\repos\AlgoFuckingRithm\TrainMapApplication\obj\Debug\net9.0\TrainMapApplication.pdb
+C:\Users\04joh\source\repos\AlgoFuckingRithm\TrainMapApplication\obj\Debug\net9.0\TrainMapApplication.genruntimeconfig.cache
+C:\Users\04joh\source\repos\AlgoFuckingRithm\TrainMapApplication\obj\Debug\net9.0\ref\TrainMapApplication.dll
