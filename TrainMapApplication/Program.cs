@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using MapDisplayOptions;
 
 class MetroManilaCommuteApp
 {
@@ -22,7 +23,7 @@ class MetroManilaCommuteApp
             switch (choice)
             {
                 case "1":
-                    DisplayTrainMap();
+                    Maps.ShowMaps();
                     break;
                 case "2":
                     Console.Write("Enter starting station: ");
@@ -122,11 +123,7 @@ class MetroManilaCommuteApp
     static void DisplayTrainMap()
     {
         Console.WriteLine("\nTrain Lines in Metro Manila (2025):");
-        foreach (var line in trainLines)
-        {
-            Console.WriteLine(line.Key + " Stations: " + string.Join(", ", line.Value));
-        }
-        Console.WriteLine("Press any key to return to the menu...");
+        Console.WriteLine("");
         Console.ReadKey();
     }
 
