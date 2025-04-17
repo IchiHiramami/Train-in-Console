@@ -18,21 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\TrainMapApplication\\Program.cs",
-              "RelativeDocumentMoniker": "TrainMapApplication\\Program.cs",
-              "ToolTip": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\TrainMapApplication\\Program.cs",
-              "RelativeToolTip": "TrainMapApplication\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T06:21:53.148Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -41,9 +28,21 @@
               "RelativeDocumentMoniker": "TrainMapApplication\\Maps.cs",
               "ToolTip": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\TrainMapApplication\\Maps.cs",
               "RelativeToolTip": "TrainMapApplication\\Maps.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T02:28:10.22Z",
+              "WhenOpened": "2025-04-15T06:38:19.438Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\TrainMapApplication\\Program.cs",
+              "RelativeDocumentMoniker": "TrainMapApplication\\Program.cs",
+              "ToolTip": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\TrainMapApplication\\Program.cs",
+              "RelativeToolTip": "TrainMapApplication\\Program.cs",
+              "ViewState": "AgIAAGoBAAAAAAAAAAAqwIgBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-04T06:21:53.148Z",
               "EditorCaption": ""
             }
           ]

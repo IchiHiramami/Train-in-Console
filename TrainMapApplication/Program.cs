@@ -1,21 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Text.RegularExpressions;
 using MapDisplayOptions;
 
 class MetroManilaCommuteApp
 {
     static Dictionary<string, Dictionary<string, List<string>>> trainLines = new Dictionary<string, Dictionary<string, List<string>>>();
-    bool pass = false;
+
+    static Dictionary<string, List<string>> transferPoints = new Dictionary<string, List<string>>()
+    {
+        { "Taft Avenue", new List<string> { "EDSA" } },
+        { "EDSA", new List<string> { "Taft Avenue" } },
+        { "Araneta Center Cubao", new List<string> { "Cubao" } },
+        { "Cubao", new List<string> { "Araneta Center Cubao" } },
+        { "Doroteo Jose", new List<string> { "Recto" } },
+        { "Recto", new List<string> { "Doroteo Jose" } }
+    };
 
     static void Main()
     {
         bool exit = false;
         InitializeTrainLines();
-        while (exit != true)
+        while (!exit)
         {
             Console.Clear();
-            Console.WriteLine("\nMETRO MANILA TRAIN COMMUTER APP\n===============================\n1. Display Train Map\n2. Plan Your Commute\n3. Find Landmark or Station\n4. Exit\n===============================");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\nMETRO MANILA TRAIN COMMUTER APP\n===============================\n");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("1. Display Train Map");
+            Console.WriteLine("2. Plan Your Commute");
+            Console.WriteLine("3. Find Landmark or Station");
+            Console.WriteLine("4. Exit");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("===============================\n");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Write("Choose an option: ");
 
             string choice = Console.ReadLine();
@@ -24,33 +44,32 @@ class MetroManilaCommuteApp
             {
                 case "1":
                     Maps.ShowMaps();
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("Press Any key to continue");
+                    Console.ReadKey();
                     break;
                 case "2":
-                    Console.Write("Enter starting station: ");
-                    string start = Console.ReadLine();
-                    Console.Write("Enter destination station: ");
-                    string destination = Console.ReadLine();
-                    PlanCommute(start, destination);
-                    Console.Write("Start Journey?");
-                    string input = Console.ReadLine();
-                    if (input == "Y")
-                    {
-                        Console.WriteLine("Starting Journey Tracking");
-                        TrackProgress(start, destination);
-                    }
-
-                    else { return; }
-
+                    FindRouteFromSwitchCase();
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("Press any key to return to main menu");
+                    Console.ReadKey();
                     break;
                 case "3":
-                    Console.Write("Enter a station to see nearby landmarks: ");
-                    string station = Console.ReadLine();
-                    ShowTourGuide(station);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write("Enter a landmark to search: ");
+                    string input = Console.ReadLine();
+                    Console.Write("Use exact match? (y/n): ");
+                    bool exact = Console.ReadLine().Trim().ToLower() == "y";
+                    SearchLandmark(input, exact);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("Press any key to return to main menu");
+                    Console.ReadKey();
                     break;
                 case "4":
                     exit = true;
-                    return;
+                    break;
                 default:
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Invalid choice. Press any key to continue...");
                     Console.ReadKey();
                     break;
@@ -58,8 +77,260 @@ class MetroManilaCommuteApp
         }
     }
 
+    static void FindRouteFromSwitchCase()
+    {
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("Where are you starting from? (station or landmark)");
+        string startInput = Console.ReadLine().Trim();
+        string start = GetLocationFromUser(startInput);
+        if (start == null) return;
+
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("Where is your destination? (station or landmark)");
+        string destInput = Console.ReadLine().Trim();
+        string destination = GetLocationFromUser(destInput);
+        if (destination == null) return;
+
+        FindRoute(start, destination);
+    }
+
+    static void FindRoute(string start, string destination)
+    {
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("\nCalculating route from {0} to {1}...\n", start, destination);
+
+        string startStation = ExtractStationName(start);
+        string destStation = ExtractStationName(destination);
+        string startLine = GetLineForStation(startStation);
+        string destLine = GetLineForStation(destStation);
+
+        if (startLine == null || destLine == null)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Unable to determine train lines for the provided stations.");
+            Console.ResetColor();
+            return;
+        }
+
+        // Case 1: If both stations are on the same line
+        if (startLine == destLine)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Travel directly from {startStation} to {destStation} on the {startLine} line.");
+            Console.ResetColor();
+        }
+        else
+        {
+            // Case 2: If the stations are on different lines, check for transfers
+            bool transferFound = false;
+            foreach (var transfer in transferPoints)
+            {
+                string station1 = transfer.Key;
+                foreach (string station2 in transfer.Value)
+                {
+                    if ((IsLandmark(startStation) || IsLandmark(destStation) || GetLineForStation(station1) == startLine)
+                        && GetLineForStation(station2) == destLine)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine($"Take {startLine} from {startStation} to {station1}, then transfer to {destLine} at {station2} to reach {destStation}.");
+                        Console.ResetColor();
+                        transferFound = true;
+                        break;
+                    }
+                    if ((IsLandmark(startStation) || IsLandmark(destStation) || GetLineForStation(station2) == startLine)
+                        && GetLineForStation(station1) == destLine)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine($"Take {startLine} from {startStation} to {station2}, then transfer to {destLine} at {station1} to reach {destStation}.");
+                        Console.ResetColor();
+                        transferFound = true;
+                        break;
+                    }
+                }
+                if (transferFound) break;
+            }
+
+            if (!transferFound)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("No available transfer found between the two lines.");
+                Console.ResetColor();
+            }
+        }
+    }
+
+    static string ExtractStationName(string input)
+    {
+        var match = Regex.Match(input, @"near (?<station>.+?) on");
+        if (match.Success)
+            return match.Groups["station"].Value.Trim();
+
+        match = Regex.Match(input, @"^(?<station>.+?) on");
+        if (match.Success)
+            return match.Groups["station"].Value.Trim();
+
+        foreach (var line in trainLines)
+        {
+            if (line.Value.ContainsKey(input))
+                return input;
+        }
+
+        foreach (var line in trainLines)
+        {
+            foreach (var station in line.Value)
+            {
+                if (station.Value.Any(landmark =>
+                    string.Equals(landmark, input, StringComparison.OrdinalIgnoreCase)))
+                {
+                    return station.Key;
+                }
+            }
+        }
+
+        return input;
+    }
+
+
+    static string GetLineForStation(string stationName)
+    {
+        foreach (var line in trainLines)
+        {
+            if (line.Value.ContainsKey(stationName))
+            {
+                return line.Key;
+            }
+        }
+        return null;
+    }
+
+    static string GetLocationFromUser(string input)
+    {
+        List<string> suggestions = FuzzySearch(input);
+
+        if (suggestions.Count == 0)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("No matching station or landmark found.");
+            Console.ResetColor();
+            return null;
+        }
+
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("Did you mean any of these?");
+        for (int i = 0; i < suggestions.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {suggestions[i]}");
+        }
+
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("Please select a number from the suggestions (1 to N):");
+        int choice;
+        while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > suggestions.Count)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Invalid choice. Please select a valid number.");
+            Console.ResetColor();
+        }
+
+        return suggestions[choice - 1];
+    }
+
+    static int LevenshteinDistance(string s1, string s2) //this function was created using AI for the smart input analysis function
+    {
+        int lenS1 = s1.Length;
+        int lenS2 = s2.Length;
+        var dp = new int[lenS1 + 1, lenS2 + 1];
+
+        for (int i = 0; i <= lenS1; dp[i, 0] = i++) { }
+        for (int j = 0; j <= lenS2; dp[0, j] = j++) { }
+
+        for (int i = 1; i <= lenS1; i++)
+        {
+            for (int j = 1; j <= lenS2; j++)
+            {
+                int cost = s1[i - 1] == s2[j - 1] ? 0 : 1;
+                dp[i, j] = Math.Min(Math.Min(dp[i - 1, j] + 1, dp[i, j - 1] + 1), dp[i - 1, j - 1] + cost);
+            }
+        }
+
+        return dp[lenS1, lenS2];
+    }
+
+    static List<string> FuzzySearch(string input)
+    {
+        var results = new List<string>();
+        string normalizedInput = input.Trim().ToLower();
+        int threshold = 3;
+
+        foreach (var line in trainLines)
+        {
+            foreach (var station in line.Value)
+            {
+                string stationName = station.Key;
+
+                if (stationName.ToLower().Contains(normalizedInput))
+                {
+                    results.Add($"{stationName} on {line.Key} line");
+                }
+
+                foreach (var landmark in station.Value)
+                {
+                    if (landmark.ToLower().Contains(normalizedInput) || LevenshteinDistance(normalizedInput, landmark.ToLower()) <= threshold)
+                    {
+                        results.Add($"{landmark} near {stationName} on {line.Key} line");
+                    }
+                }
+            }
+        }
+
+        return results;
+    }
+
+    static void SearchLandmark(string input, bool exact)
+    {
+        var matches = new List<string>();
+
+        foreach (var line in trainLines)
+        {
+            foreach (var station in line.Value)
+            {
+                foreach (var landmark in station.Value)
+                {
+                    if ((exact && landmark.Equals(input, StringComparison.OrdinalIgnoreCase)) ||
+                        (!exact && landmark.IndexOf(input, StringComparison.OrdinalIgnoreCase) >= 0))
+                    {
+                        matches.Add($"{landmark} near {station.Key} on {line.Key} line");
+                    }
+                }
+            }
+        }
+
+        if (matches.Count > 0)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Search results:");
+            foreach (var match in matches)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("- " + match);
+            }
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("No results found.");
+            Console.ResetColor();
+        }
+    }
+
+    static bool IsLandmark(string station)
+    {
+        return station.Contains("landmark");
+    }
+
     static void InitializeTrainLines()
     {
+
         trainLines["MRT-3"] = new Dictionary<string, List<string>>
     {
         { "Taft Avenue", new List<string> { "Transfer to LRT-1 (EDSA)" } },
@@ -117,37 +388,5 @@ class MetroManilaCommuteApp
         { "Balintawak", new List<string> { "Balintawak Market", "EDSA-Cloverleaf Interchange", "Monument of the Cry of Balintawak", "Parish Church for Joseph the Worker", "Balintawak Home Depot", "Ayala Cloverleaf Mall", "Puregold Balintawak", "Juliana Wet & Dry Market" } },
         { "Fernando Poe Jr.", new List<string> { "Transfer to MRT-3 (North Avenue)", "SM North EDSA", "Trinoma", "WalterMart North EDSA", "Jackman Plaza Muñoz", "Muñoz Market", "S&R Membership Shopping - Congressional" } }
     };
-    }
-
-
-    static void DisplayTrainMap()
-    {
-        Console.WriteLine("\nTrain Lines in Metro Manila (2025):");
-        Console.WriteLine("");
-        Console.ReadKey();
-    }
-
-    static void PlanCommute(string start, string destination)
-    {
-        Console.WriteLine($"\nCalculating shortest and cheapest route from {start} to {destination}...");
-        Console.WriteLine("(Route calculation logic to be implemented)");
-        Console.WriteLine("Press any key to return to the menu...");
-        Console.ReadKey();
-    }
-
-    static void TrackProgress(string currentStation, string destination)
-    {
-        Console.WriteLine($"\nTracking progress: You are currently at {currentStation}, heading towards {destination}.");
-        Console.WriteLine("(Progress tracking logic to be implemented)");
-        Console.WriteLine("Press any key to return to the menu...");
-        Console.ReadKey();
-    }
-
-    static void ShowTourGuide(string currentStation)
-    {
-        Console.WriteLine($"\nLandmarks near {currentStation}:...");
-        Console.WriteLine("(Landmark fetching logic to be implemented)");
-        Console.WriteLine("Press any key to return to the menu...");
-        Console.ReadKey();
     }
 }
