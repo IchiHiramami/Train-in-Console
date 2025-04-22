@@ -1,77 +1,61 @@
-# Metro Manila Train Commuter App
+This ReadMe File is A.I. Generated for the sole purpose of keeping track what has already been implemented so far. 
 
-A C# console application that helps users plan their commute using Metro Manila's major train lines: **MRT-3**, **LRT-1**, and **LRT-2**. The app allows users to view train maps, find stations or landmarks, and get commute routes including transfer logic between train lines.
+# Metro Manila Train Commute App
 
-## ✨ Features
+## Overview
+The **Metro Manila Train Commute App** is designed to help commuters plan their trips, view train maps, and search for stations or landmarks along the Metro Manila rail system. The app provides features to simulate travel progress, find routes, and display relevant transit information.
 
-- 🗺️ **Display Train Map** — Show available train lines and stations.
-- 📍 **Smart Search** — Find stations or nearby landmarks using fuzzy search.
-- 🔁 **Transfer Logic** — Handles station transfers between LRT-1, MRT-3, and LRT-2.
-- 🧭 **Commute Planning** — Route calculation from a start station/landmark to a destination.
+## Core Features
 
-## 🚉 Train Lines
+1. **Display Train Map**: 
+   - Shows the Metro Manila train lines and stations.
 
-The app includes stations and landmarks for:
-- **MRT-3** (e.g., Taft Avenue, Ayala, Cubao)
-- **LRT-1** (e.g., EDSA, Pedro Gil, Baclaran)
-- **LRT-2** (e.g., Katipunan, Recto, Antipolo)
+2. **Plan Your Commute**:
+   - Users can input a starting station/landmark and a destination to get the best travel route.
+   - Supports both direct routes and routes with transfers between different train lines.
 
-## 🔁 Transfer Points
+3. **Find Landmark or Station**:
+   - Search for stations or landmarks by name.
+   - Offers fuzzy search results for partial or approximate matches.
 
-The app supports train transfers at the following stations:
-- **Taft Avenue** (MRT-3) ↔️ **EDSA** (LRT-1)
-- **Cubao** (MRT-3) ↔️ **Araneta Center Cubao** (LRT-2)
-- **Doroteo Jose** (LRT-1) ↔️ **Recto** (LRT-2)
+4. **Travel Simulation**:
+   - Once a route is found, the app simulates the commute by showing the stations and progress in real-time with an interactive progress bar.
 
-## 🛠️ Core Components
+## Possible To-Do List
+1. **Enhance User Interface**:
+   - Implement a graphical user interface (GUI) for better user interaction.
+   - Add station and landmark images to improve user experience.
 
-### `InitializeTrainLines()`
-Initializes a dictionary of train lines with their respective stations and nearby landmarks.
+2. **Real-Time Updates**:
+   - Integrate real-time data for train schedules and delays.
 
-### `FindRoute()`
-Calculates a route from a start location to a destination, considering transfer stations when needed.
+3. **Save Favorite Routes**:
+   - Allow users to save their favorite routes or stations for quick access.
 
-### `FuzzySearch()`
-Uses Levenshtein Distance to match user input to station or landmark names.
+4. **Improve Route Suggestions**:
+   - Enhance the route suggestion algorithm to include walking distance between stations and landmarks.
 
-### `SearchLandmark()`
-Searches landmarks by exact or partial match, then displays their nearest stations.
+5. **Multilingual Support**:
+   - Add language options (e.g., Filipino and English) to cater to a wider audience.
 
-### `GetLocationFromUser()`
-Interactive user prompt to select the correct location from a list of fuzzy-matched suggestions.
+6. **Notifications for Train Closures**:
+   - Notify users of unexpected closures or delays on their planned route.
 
-### `ExtractStationName()`
-Parses user input to identify relevant station names from descriptive strings.
+7. **Landmark to Station Finder**:
+   - Add functionality to search for stations by entering landmarks.
 
-## 🤖 Smart Input Analysis
+8. **Progress Bar Redesign**:
+   - Revamp the progress bar to provide a smoother and more visually engaging experience during travel simulations.
 
-The app includes a Levenshtein Distance implementation for typo-tolerant input, making it easier to find stations and landmarks even with slight spelling errors.
+9. **More Features**:
+   - Add other enhancements based on user feedback and ongoing development.
 
-### Example:
+## Known Issues
 
-If user types:  
-`"Trinoma"`  
-The app might suggest:  
-`"Trinoma near North Avenue on MRT-3 line"`
+1. **MRT to LRT Transfer Issue**:
+   - The transfer between MRT and LRT lines is not currently working as expected. This feature needs further improvement to ensure smooth transfer point handling between lines.
 
-## 🧪 Sample Use Case
-
-**User selects option 2: Plan Commute**
-
-## 📁 Dependencies
-
-- `System.Collections.Generic`
-- `System.Text.RegularExpressions`
-- `MapDisplayOptions` (custom/placeholder for `Maps.ShowMaps()`)
-
-## 📌 To-Do / Improvements
-
-- [ ] GUI version (e.g., Windows Forms or WPF)
-- [ ] Real-time train schedules
-- [ ] Fare calculation
-- [ ] Integration with Google Maps API for accurate routing
-
-## 👨‍💻 Author
-
-Built with 💡 and logic by a commuter for fellow commuters.
+## Future Improvements
+- Populate and update the database with accurate and real-time data.
+- Enhance the transfer point logic to handle more complex transfers and routing.
 

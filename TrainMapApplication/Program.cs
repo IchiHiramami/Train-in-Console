@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using MapDisplayOptions;
 
 class MetroManilaCommuteApp
 {
     static Dictionary<string, Dictionary<string, List<string>>> trainLines = new Dictionary<string, Dictionary<string, List<string>>>();
-
+    
     static Dictionary<string, List<string>> transferPoints = new Dictionary<string, List<string>>()
-    {
-        { "Taft Avenue", new List<string> { "EDSA" } },
-        { "EDSA", new List<string> { "Taft Avenue" } },
-        { "Araneta Center Cubao", new List<string> { "Cubao" } },
-        { "Cubao", new List<string> { "Araneta Center Cubao" } },
-        { "Doroteo Jose", new List<string> { "Recto" } },
-        { "Recto", new List<string> { "Doroteo Jose" } }
-    };
+{
+    { "Taft Avenue", new List<string> { "EDSA" } },
+    { "EDSA", new List<string> { "Taft Avenue" } },
+    { "Araneta Center Cubao", new List<string> { "Cubao" } },
+    { "Cubao", new List<string> { "Araneta Center Cubao" } },
+    { "Doroteo Jose", new List<string> { "Recto" } },
+    { "Recto", new List<string> { "Doroteo Jose" } },
+};
 
     static void Main()
     {
@@ -49,7 +45,7 @@ class MetroManilaCommuteApp
                     Console.ReadKey();
                     break;
                 case "2":
-                    FindRouteFromSwitchCase();
+                    origin_destinationHandler();
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write("Press any key to return to main menu");
                     Console.ReadKey();
@@ -77,7 +73,7 @@ class MetroManilaCommuteApp
         }
     }
 
-    static void FindRouteFromSwitchCase()
+    static void origin_destinationHandler()
     {
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("Where are you starting from? (station or landmark)");
@@ -112,16 +108,18 @@ class MetroManilaCommuteApp
             return;
         }
 
-        // Case 1: If both stations are on the same line
+        List<string> route = new List<string>();
+
         if (startLine == destLine)
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Travel directly from {startStation} to {destStation} on the {startLine} line.");
             Console.ResetColor();
+
+            route = GetStationsBetween(startLine, startStation, destStation); 
         }
         else
         {
-            // Case 2: If the stations are on different lines, check for transfers
             bool transferFound = false;
             foreach (var transfer in transferPoints)
             {
@@ -135,6 +133,9 @@ class MetroManilaCommuteApp
                         Console.WriteLine($"Take {startLine} from {startStation} to {station1}, then transfer to {destLine} at {station2} to reach {destStation}.");
                         Console.ResetColor();
                         transferFound = true;
+
+                        route.AddRange(GetStationsBetween(startLine, startStation, station1));
+                        route.AddRange(GetStationsBetween(destLine, station2, destStation));
                         break;
                     }
                     if ((IsLandmark(startStation) || IsLandmark(destStation) || GetLineForStation(station2) == startLine)
@@ -144,6 +145,9 @@ class MetroManilaCommuteApp
                         Console.WriteLine($"Take {startLine} from {startStation} to {station2}, then transfer to {destLine} at {station1} to reach {destStation}.");
                         Console.ResetColor();
                         transferFound = true;
+
+                        route.AddRange(GetStationsBetween(startLine, startStation, station2));
+                        route.AddRange(GetStationsBetween(destLine, station1, destStation));
                         break;
                     }
                 }
@@ -157,7 +161,13 @@ class MetroManilaCommuteApp
                 Console.ResetColor();
             }
         }
+
+        if (route.Count > 0)
+        {
+            ShowRideProgress(route);
+        }
     }
+
 
     static string ExtractStationName(string input)
     {
@@ -190,6 +200,71 @@ class MetroManilaCommuteApp
         return input;
     }
 
+static List<string> GetStationsBetween(string line, string start, string end)
+{
+    if (!trainLines.ContainsKey(line)) return new List<string>();
+
+    var stations = trainLines[line].Keys.ToList();
+    int startIndex = stations.IndexOf(start);
+    int endIndex = stations.IndexOf(end);
+
+    if (startIndex == -1 || endIndex == -1) return new List<string>();
+
+    List<string> path;
+    if (startIndex <= endIndex)
+        path = stations.GetRange(startIndex, endIndex - startIndex + 1);
+    else
+        path = stations.GetRange(endIndex, startIndex - endIndex + 1).AsEnumerable().Reverse().ToList();
+
+    List<string> transferStations = path.Where(station => transferPoints.ContainsKey(station)).ToList();
+
+    if (transferStations.Any())
+    {
+        Console.WriteLine("Transfer points found: ");
+        foreach (var transfer in transferStations)
+        {
+            Console.WriteLine($"- Transfer at {transfer}");
+        }
+    }
+
+    Console.ForegroundColor = ConsoleColor.Magenta;
+    Console.WriteLine("\nSimulating travel with progress...\n");
+
+    int total = path.Count;
+    for (int i = 0; i < total; i++)
+    {
+        string station = path[i];
+
+        string passedStations = string.Join(" ", path.Take(i)); 
+        string currentStation = path[i];
+        string upcomingStations = string.Join(" ", path.Skip(i + 1)); 
+
+        string progressBar = $"[{GetColoredStationString(passedStations, ConsoleColor.Green)}" + 
+                              $"{GetColoredStationString(currentStation, ConsoleColor.Red)}" + 
+                              $"{GetColoredStationString(upcomingStations, ConsoleColor.Yellow)}]";
+
+        Console.Clear();
+        Console.Write(progressBar.PadRight(Console.WindowWidth)); 
+        Thread.Sleep(1000);
+    }
+    Console.WriteLine();
+
+    return path;
+}
+
+    static string GetColoredStationString(string text, ConsoleColor color)
+    {
+        Console.ForegroundColor = color;
+        string coloredText = text;
+        Console.ResetColor();
+        return coloredText;
+    }
+
+    static string GetColoredString(string text, ConsoleColor color)
+    {
+        Console.ForegroundColor = color;
+        return text;
+    }
 
     static string GetLineForStation(string stationName)
     {
@@ -328,6 +403,56 @@ class MetroManilaCommuteApp
         return station.Contains("landmark");
     }
 
+    public static void ShowRideProgress(List<string> route)
+    {
+        Console.WriteLine("\nStart ride? (yes/no): ");
+        string confirm = Console.ReadLine()?.ToLower();
+
+        if (confirm != "yes") return;
+
+        for (int i = 0; i < route.Count; i++)
+        {
+            Console.Clear();
+
+            Console.WriteLine("Ride Progress:");
+            for (int j = 0; j < route.Count; j++)
+            {
+                if (j < i)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write($"[{route[j]}] ");
+                }
+                else if (j == i)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write($">>{route[j]}<< ");
+                }
+                else
+                {
+                    Console.ResetColor();
+                    Console.Write($"{route[j]} ");
+                }
+            }
+            Console.ResetColor();
+
+            double progress = ((i + 1) / (double)route.Count) * 100;
+            int barLength = 20;
+            int filled = (int)(progress / 100 * barLength);
+            string bar = "[" + new string('#', filled) + new string(' ', barLength - filled) + "]";
+            Console.WriteLine($"\n\nProgress: {bar} {progress:0}%");
+
+            if (i < route.Count - 1)
+            {
+                Console.WriteLine("Press Enter to continue to the next station...");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("\nYou have reached your destination!");
+            }
+        }
+    }
+
     static void InitializeTrainLines()
     {
 
@@ -364,6 +489,7 @@ class MetroManilaCommuteApp
         { "Legarda", new List<string> { "Centro Escolar University (CEU)", "San Beda University", "National University (NU)", "University of Santo Tomas (UST)", "University of the East (UE)" } },
         { "Recto", new List<string> { "Transfer to LRT-1 (Doroteo Jose)", "University of Santo Tomas (UST)", "Far Eastern University (FEU)", "University of the East (UE)", "Binondo" } }
     };
+
         trainLines["LRT-1"] = new Dictionary<string, List<string>>
     {
         { "Redemptorist", new List<string> { "Seaside Market Baclaran", "S&R Membership Shopping - Aseana", "DFA Office of Consular Affairs" } },
