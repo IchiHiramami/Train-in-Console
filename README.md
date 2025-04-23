@@ -19,7 +19,7 @@ This application is designed to assist users with navigating the Metro Manila ra
 
 5. **Transfer Points**: The app includes logic to display transfer points between the different MRT and LRT lines (such as Taft Avenue between MRT-3 and LRT-1, Cubao between MRT-3 and LRT-2, etc.)
 
-6. **User Interface**: The app uses the console for interaction, with clear color-coded outputs for readability and organization.
+6. **User Interface**: The app uses the console for interaction, with (semi) clear color-coded outputs for readability and organization.
 
 ## Code Changes and Updates
 
@@ -28,21 +28,12 @@ This application is designed to assist users with navigating the Metro Manila ra
 The app includes transfer points between the three major Metro Manila train lines:
 
 - **Taft Station (MRT-3)** connects to **EDSA Station (LRT-1)**
-- **Araneta Center Cubao** is a transfer point for both MRT-3 and LRT-2
+- **Araneta Center Cubao** is a transfer point for both MRT-3 and LRT-2 [currently debugging]
 - **Doroteo Jose (LRT-1)** and **Recto (LRT-2)** are transfer stations between LRT-1 and LRT-2.
 
 ### Station and Landmark Search
 
 The app allows users to search for a station and view its corresponding landmarks.
-
-### Console Layout
-
-- The console window is set to a custom size, optimized for 1440p resolution:
-  ```csharp
-  Console.SetWindowSize(140, 40);
-  Console.SetBufferSize(140, 40);
-  ```
-- This ensures the console window is large enough to display information but doesn't take up the full screen.
 
 ### Mock Map Display
 
@@ -81,8 +72,7 @@ A. Santos -- Blumentritt -- Tayuman -- Bambang -- Doroteo Jose -- Carriedo -- Ce
 
 ### Updates to Console Output
 
-- The output now displays station names in color for improved readability, using yellow for the main station and white for landmarks.
-- Added highlights for stations in different train lines, as per user request.
+ - Additional context guide added
 
 ## Setup
 
@@ -91,4 +81,3 @@ A. Santos -- Blumentritt -- Tayuman -- Bambang -- Doroteo Jose -- Carriedo -- Ce
 3. Build and run the application.
 4. The program will launch the console-based Metro Manila commuter app.
 
-Enjoy navigating the Metro Manila train system!
