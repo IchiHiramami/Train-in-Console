@@ -93,14 +93,54 @@ class MetroManilaCommuteApp
                     Console.Write("Enter a landmark to search: ");
                     string landmarkInput = Console.ReadLine();
                     List<string> landmarkResults = Xavier.FuzzySearch(landmarkInput);
+
                     if (landmarkResults.Count == 0)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("No matching landmark found.");
-                        Console.ResetColor();
+                        // If no matches found, suggest alternatives using Levenshtein Distance
+                        List<string> allLandmarks = new List<string>();
+
+                        // Collect landmarks from all stations in all train lines
+                        foreach (var line in Maps.trainLines)
+                        {
+                            foreach (var station in line.Value)
+                            {
+                                allLandmarks.AddRange(station.Value);  // Add landmarks associated with the station
+                            }
+                        }
+
+                        // Suggest landmarks based on Levenshtein distance
+                        var suggestedLandmarks = allLandmarks
+                                                  .Distinct()  // Remove duplicate landmarks
+                                                  .Select(landmark => new { Landmark = landmark, Distance = Xavier.LevenshteinDistance(landmarkInput.ToLower(), landmark.ToLower()) })
+                                                  .Where(x => x.Distance <= 3)  // Allow some tolerance for typo
+                                                  .OrderBy(x => x.Distance)
+                                                  .Take(5)  // Limit suggestions to top 5
+                                                  .ToList();
+
+                        if (suggestedLandmarks.Any())
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("No exact matches found. Did you mean one of these?");
+                            Console.ResetColor();
+                            foreach (var suggestion in suggestedLandmarks)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine($"- {suggestion.Landmark} (Distance: {suggestion.Distance})");
+                            }
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("No matching landmark found.");
+                            Console.ResetColor();
+                        }
+
+                        Console.WriteLine("\nPress any key to return...");
                         Console.ReadKey();
                         break;
                     }
+
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Possible matches:");
                     foreach (var result in landmarkResults)
@@ -112,54 +152,70 @@ class MetroManilaCommuteApp
 
                 case "2":
                     Console.Write("Enter a station to list its landmarks: ");
-                    string stationInput = Console.ReadLine();
-                    List<string> stationMatches = Xavier.FuzzySearch(stationInput);
-                    if (stationMatches.Count == 0)
+                    string stationInput = Console.ReadLine().Trim().ToLower(); // Normalize input
+
+                    bool found = false;
+
+                    foreach (var line in Maps.trainLines)
+                    {
+                        foreach (var station in line.Value.Keys)
+                        {
+                            if (station.ToLower() == stationInput)
+                            {
+                                found = true;
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                Console.WriteLine($"\nLandmarks near {station} on {line.Key}:");
+                                foreach (var landmark in line.Value[station])
+                                {
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.WriteLine("- " + landmark);
+                                }
+                                break;
+                            }
+                        }
+                        if (found) break;
+                    }
+
+                    if (!found)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("No matching station found.");
                         Console.ResetColor();
-                        Console.ReadKey();
-                        break;
                     }
 
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Possible station matches and their landmarks:");
-                    foreach (string match in stationMatches)
-                    {
-                        string stationName = ExtractStationName(match);
-                        string lineName = GetLineForStation(stationName);
-                        if (lineName != null && Maps.trainLines[lineName].ContainsKey(stationName))
-                        {
-                            Console.WriteLine($"\nLandmarks near {stationName} on {lineName} line:");
-                            foreach (var landmark in Maps.trainLines[lineName][stationName])
-                            {
-                                Console.ForegroundColor = ConsoleColor.White;
-                                Console.WriteLine("- " + landmark);
-                            }
-                        }
-                    }
-                    Console.ResetColor();
                     Console.WriteLine("\nPress any key to return...");
                     Console.ReadKey();
                     break;
 
+
                 case "3":
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Stations per train line:");
+                    Console.WriteLine("Stations per train line:\n");
+
                     foreach (var line in Maps.trainLines)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine($"\n{line.Key} Line:");
+                        Console.WriteLine($"{line.Key} Line:");
                         Console.ForegroundColor = ConsoleColor.White;
+
+                        int count = 0;
                         foreach (var station in line.Value.Keys)
                         {
-                            Console.WriteLine("- " + station);
+                            Console.Write($"{station.PadRight(30)}"); // Adjust the number to control column width
+                            count++;
+
+                            if (count % 3 == 0) // Wrap after 3 stations per line
+                                Console.WriteLine();
                         }
+
+                        if (count % 3 != 0)
+                            Console.WriteLine(); // Ensure line break after each section
+                        Console.WriteLine(); // Extra spacing between lines
                     }
+
                     Console.ResetColor();
-                    Console.WriteLine("\nPress any key to return...");
+                    Console.WriteLine("Press any key to return...");
                     Console.ReadKey();
                     break;
 
@@ -253,7 +309,7 @@ class MetroManilaCommuteApp
             ShowRideProgress(route);
         }
     }
-
+        
     static string ExtractStationName(string input)
     {
         var match = Regex.Match(input, @"near (?<station>.+?) on");
@@ -395,46 +451,61 @@ class MetroManilaCommuteApp
 
     public static void ShowRideProgress(List<string> route)
     {
-        Console.WriteLine("\nStart ride? (yes/no): ");
+        Console.WriteLine("\nStart ride? (y/n): ");
         string confirm = Console.ReadLine()?.ToLower();
 
-        if (confirm != "yes") return;
+        if (confirm != "y") return;
 
         for (int i = 0; i < route.Count; i++)
         {
             Console.Clear();
+            Console.WriteLine("Ride Progress:\n");
 
-            Console.WriteLine("Ride Progress:");
+            // Loop through the route and display each station's status
             for (int j = 0; j < route.Count; j++)
             {
-                if (j < i)
+                string station = route[j];
+                bool isTransfer = Maps.transferPoints.ContainsKey(station);
+
+                // Adjust colors based on the station's status
+                if (j == 0 || j == route.Count - 1)
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Write($"[{route[j]}] ");
+                    Console.ForegroundColor = ConsoleColor.Red; // Start/end
+                }
+                else if (j < i)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkGray; // Passed
                 }
                 else if (j == i)
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.Write($">>{route[j]}<< ");
+                    Console.ForegroundColor = ConsoleColor.Green; // Current
                 }
                 else
                 {
-                    Console.ResetColor();
-                    Console.Write($"{route[j]} ");
+                    Console.ForegroundColor = ConsoleColor.White; // Upcoming
                 }
+
+                // Add (Transfer) tag if it's a transfer point
+                string label = isTransfer ? $"{station} (Transfer)" : station;
+                Console.Write($"**{label}**");
+
+                if (j < route.Count - 1)
+                    Console.Write(" -> ");
             }
+
             Console.ResetColor();
 
+            // Calculate progress and display a progress bar
             double progress = ((i + 1) / (double)route.Count) * 100;
             int barLength = 20;
             int filled = (int)(progress / 100 * barLength);
             string bar = "[" + new string('#', filled) + new string(' ', barLength - filled) + "]";
+
             Console.WriteLine($"\n\nProgress: {bar} {progress:0}%");
 
             if (i < route.Count - 1)
             {
-                Console.WriteLine("Press Enter to continue to the next station...");
-                Console.ReadLine();
+                Thread.Sleep(1000); // Delay to simulate the ride
             }
             else
             {

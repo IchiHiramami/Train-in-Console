@@ -1,61 +1,94 @@
-This ReadMe File is A.I. Generated for the sole purpose of keeping track what has already been implemented so far. 
 
-# Metro Manila Train Commute App
+# Metro Manila Commuter App
 
-## Overview
-The **Metro Manila Train Commute App** is designed to help commuters plan their trips, view train maps, and search for stations or landmarks along the Metro Manila rail system. The app provides features to simulate travel progress, find routes, and display relevant transit information.
+This application is designed to assist users with navigating the Metro Manila rail systems (MRT-3, LRT-1, LRT-2). The app provides features such as station searches, route planning, and landmark information.
 
-## Core Features
+## Features
 
-1. **Display Train Map**: 
-   - Shows the Metro Manila train lines and stations.
+1. **Main Menu**: The app starts by displaying a menu with the following options:
+   - 1: Route planning (plan a route between stations)
+   - 2: Landmark search (search for stations and their associated landmarks)
+   - 3: View all stations (shows all stations across all train lines)
+   - 4: Exit the program
 
-2. **Plan Your Commute**:
-   - Users can input a starting station/landmark and a destination to get the best travel route.
-   - Supports both direct routes and routes with transfers between different train lines.
+2. **Route Planning**: Users can plan routes between two stations. The app displays the route options and transfer points.
 
-3. **Find Landmark or Station**:
-   - Search for stations or landmarks by name.
-   - Offers fuzzy search results for partial or approximate matches.
+3. **Landmark Search**: Users can search for stations by name. The app returns the station's landmarks. It handles fuzzy matching, returning close matches if an exact match isn't found.
 
-4. **Travel Simulation**:
-   - Once a route is found, the app simulates the commute by showing the stations and progress in real-time with an interactive progress bar.
+4. **All Stations Display**: A full list of all stations, categorized by train line, is shown when users select option 3.
 
-## Possible To-Do List
-1. **Enhance User Interface**:
-   - Implement a graphical user interface (GUI) for better user interaction.
-   - Add station and landmark images to improve user experience.
+5. **Transfer Points**: The app includes logic to display transfer points between the different MRT and LRT lines (such as Taft Avenue between MRT-3 and LRT-1, Cubao between MRT-3 and LRT-2, etc.)
 
-2. **Real-Time Updates**:
-   - Integrate real-time data for train schedules and delays.
+6. **User Interface**: The app uses the console for interaction, with clear color-coded outputs for readability and organization.
 
-3. **Save Favorite Routes**:
-   - Allow users to save their favorite routes or stations for quick access.
+## Code Changes and Updates
 
-4. **Improve Route Suggestions**:
-   - Enhance the route suggestion algorithm to include walking distance between stations and landmarks.
+### Transfer Logic
 
-5. **Multilingual Support**:
-   - Add language options (e.g., Filipino and English) to cater to a wider audience.
+The app includes transfer points between the three major Metro Manila train lines:
 
-6. **Notifications for Train Closures**:
-   - Notify users of unexpected closures or delays on their planned route.
+- **Taft Station (MRT-3)** connects to **EDSA Station (LRT-1)**
+- **Araneta Center Cubao** is a transfer point for both MRT-3 and LRT-2
+- **Doroteo Jose (LRT-1)** and **Recto (LRT-2)** are transfer stations between LRT-1 and LRT-2.
 
-7. **Landmark to Station Finder**:
-   - Add functionality to search for stations by entering landmarks.
+### Station and Landmark Search
 
-8. **Progress Bar Redesign**:
-   - Revamp the progress bar to provide a smoother and more visually engaging experience during travel simulations.
+The app allows users to search for a station and view its corresponding landmarks.
 
-9. **More Features**:
-   - Add other enhancements based on user feedback and ongoing development.
+### Console Layout
 
-## Known Issues
+- The console window is set to a custom size, optimized for 1440p resolution:
+  ```csharp
+  Console.SetWindowSize(140, 40);
+  Console.SetBufferSize(140, 40);
+  ```
+- This ensures the console window is large enough to display information but doesn't take up the full screen.
 
-1. **MRT to LRT Transfer Issue**:
-   - The transfer between MRT and LRT lines is not currently working as expected. This feature needs further improvement to ensure smooth transfer point handling between lines.
+### Mock Map Display
 
-## Future Improvements
-- Populate and update the database with accurate and real-time data.
-- Enhance the transfer point logic to handle more complex transfers and routing.
+A mock ASCII-style map representation of the Metro Manila train system is generated, showing the relative position of stations, including LRT-1, LRT-2, and MRT-3, with lines connecting them.
 
+Example output of the train system map (simplified):
+```
+                                             [Antipolo]
+                                                |
+                                        [Marikina-Pasig]
+                                                 |
+                                            [Santolan]
+                                                  |
+                                            [Katipunan]
+                                                  |
+                                             [Anonas]=======
+                                                  |     |||
+         North Ave -- Quezon Ave -- GMA Kamuning -- Araneta Cubao ---------- Santolan-Annapolis ---------- Ortigas ----------- Shaw ----------- Boni -----------|
+                                                  |                                                                                                             |
+[FPJ]                                   [Betty-Go Belmonte]                                                                                                 [Buendia]
+   |                                              |                                                                                                             |
+[Balintawak]                                  [Gilmore]                                                                                                         |
+   |                                              |                                                                                                             |
+   |                                          [J. Ruiz]                                                                                                      [Ayala]
+[Monumento]                                       |                                                                                                             |
+   |                                          [V. Mapa]                                                                                                         |
+   |                                              |                                                                                                             |
+[5th Avenue]                                   [Pureza]                                                                                                   [Magallanes]
+   |                                              |                                                                                                             |
+   |                                          [Legarda]                                                                                                         |
+[R. Papa]                                         |                                                                                                             |
+   |                                           [Recto]                                                                                                    [Taft Avenue]
+   |                                             |||                                                                                                          |||
+A. Santos -- Blumentritt -- Tayuman -- Bambang -- Doroteo Jose -- Carriedo -- Central -- UN  -- Pedro Gil -- Quirino -- Vito Cruz -- Gil Puyat -- Libertad -- EDSA -- Baclaran -- Redemptorist
+```
+
+### Updates to Console Output
+
+- The output now displays station names in color for improved readability, using yellow for the main station and white for landmarks.
+- Added highlights for stations in different train lines, as per user request.
+
+## Setup
+
+1. Clone or download the repository.
+2. Open the project in Visual Studio or your preferred C# editor.
+3. Build and run the application.
+4. The program will launch the console-based Metro Manila commuter app.
+
+Enjoy navigating the Metro Manila train system!

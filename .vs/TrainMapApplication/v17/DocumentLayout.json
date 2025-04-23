@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6546A229-B226-4946-86C4-0B214AE27B84}|TrainMapApplication\\TrainMapApplication.csproj|c:\\users\\04joh\\source\\repos\\algofuckingrithm\\trainmapapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6546A229-B226-4946-86C4-0B214AE27B84}|TrainMapApplication\\TrainMapApplication.csproj|solutionrelative:trainmapapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     },
@@ -17,6 +13,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{6546A229-B226-4946-86C4-0B214AE27B84}|TrainMapApplication\\TrainMapApplication.csproj|c:\\users\\04joh\\source\\repos\\algofuckingrithm\\trainmapapplication\\smartfunction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6546A229-B226-4946-86C4-0B214AE27B84}|TrainMapApplication\\TrainMapApplication.csproj|solutionrelative:trainmapapplication\\smartfunction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6546A229-B226-4946-86C4-0B214AE27B84}|TrainMapApplication\\TrainMapApplication.csproj|c:\\users\\04joh\\source\\repos\\algofuckingrithm\\trainmapapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6546A229-B226-4946-86C4-0B214AE27B84}|TrainMapApplication\\TrainMapApplication.csproj|solutionrelative:trainmapapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,17 +26,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "SmartFunction.cs",
               "DocumentMoniker": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\TrainMapApplication\\SmartFunction.cs",
               "RelativeDocumentMoniker": "TrainMapApplication\\SmartFunction.cs",
               "ToolTip": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\TrainMapApplication\\SmartFunction.cs",
               "RelativeToolTip": "TrainMapApplication\\SmartFunction.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAABqPQYAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-23T05:29:17.17Z",
               "IsPinned": true,
@@ -44,27 +44,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Maps.cs",
-              "DocumentMoniker": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\TrainMapApplication\\Maps.cs",
-              "RelativeDocumentMoniker": "TrainMapApplication\\Maps.cs",
-              "ToolTip": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\TrainMapApplication\\Maps.cs",
-              "RelativeToolTip": "TrainMapApplication\\Maps.cs",
-              "ViewState": "AgIAABgAAACg/P////8nwAsAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T05:14:54.147Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "README.md",
               "DocumentMoniker": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\README.md",
               "RelativeDocumentMoniker": "README.md",
               "ToolTip": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\README.md",
               "RelativeToolTip": "README.md",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEcAAABARP////8HwFEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
               "WhenOpened": "2025-04-17T06:31:14.171Z",
               "IsPinned": true,
@@ -72,13 +58,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\TrainMapApplication\\Program.cs",
               "RelativeDocumentMoniker": "TrainMapApplication\\Program.cs",
               "ToolTip": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\TrainMapApplication\\Program.cs",
               "RelativeToolTip": "TrainMapApplication\\Program.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAABsPRUAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAA5v////8fwB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-04T06:21:53.148Z",
               "IsPinned": true,
@@ -87,6 +73,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Maps.cs",
+              "DocumentMoniker": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\TrainMapApplication\\Maps.cs",
+              "RelativeDocumentMoniker": "TrainMapApplication\\Maps.cs",
+              "ToolTip": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\TrainMapApplication\\Maps.cs",
+              "RelativeToolTip": "TrainMapApplication\\Maps.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T05:14:54.147Z",
+              "EditorCaption": ""
             }
           ]
         }
