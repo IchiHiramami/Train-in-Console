@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TrainMapApplication")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8fcdf71bd56023fb9fc64156bf57e8c6eb340454")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ccb13cf9cf5cb8514bca477bcce8d2541d4bdbff")]
 [assembly: System.Reflection.AssemblyProductAttribute("TrainMapApplication")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TrainMapApplication")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
