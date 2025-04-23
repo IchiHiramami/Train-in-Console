@@ -43,7 +43,7 @@ namespace MapDisplayOptions
             { "Santolan", new List<string> { "SM Marikina", "Ayala Malls Feliz", "Dee Hwa Liong Academy (DHLA)" } },
             { "Katipunan", new List<string> { "Philippine School of Business Administration (PSBA)", "Ateneo de Manila University (ADMU)", "Miriam College", "University of the Philippines (UP) Diliman", "St. Bridget School" } },
             { "Anonas", new List<string> { "Technological Institute of the Philippines (TIP)", "Saint Joseph Shrine" } },
-            { "Cubao", new List<string> { "Transfer to MRT-3 (Cubao)", "Araneta Center", "Araneta Colosseum", "Gateway", "Cubao Cathedral Church" } },
+            { "Araneta Center Cubao", new List<string> { "Transfer to MRT-3 (Cubao)", "Araneta Center", "Araneta Colosseum", "Gateway", "Cubao Cathedral Church" } },
             { "Betty-Go Belmonte", new List<string> { "Kalayaan College", "Cubao Cathedral Church", "Holy Buddhist Temple" } },
             { "Gilmore", new List<string> { "St. Paul University", "Trinity University of Asia" } },
             { "J. Ruiz", new List<string> { "Central Colleges of the Philippines" } },

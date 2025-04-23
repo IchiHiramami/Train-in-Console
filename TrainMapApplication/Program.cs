@@ -363,8 +363,7 @@ class MetroManilaCommuteApp
             }
         }
 
-        Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine("\nSimulating travel with progress...\n");
+        Thread.Sleep(5000);
 
         int total = path.Count;
         for (int i = 0; i < total; i++)

@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+      "AbsoluteMoniker": "D:0:0:{6546A229-B226-4946-86C4-0B214AE27B84}|TrainMapApplication\\TrainMapApplication.csproj|c:\\users\\04joh\\source\\repos\\algofuckingrithm\\trainmapapplication\\progress_log.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{6546A229-B226-4946-86C4-0B214AE27B84}|TrainMapApplication\\TrainMapApplication.csproj|solutionrelative:trainmapapplication\\progress_log.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6546A229-B226-4946-86C4-0B214AE27B84}|TrainMapApplication\\TrainMapApplication.csproj|c:\\users\\04joh\\source\\repos\\algofuckingrithm\\trainmapapplication\\maps.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6546A229-B226-4946-86C4-0B214AE27B84}|TrainMapApplication\\TrainMapApplication.csproj|solutionrelative:trainmapapplication\\maps.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6546A229-B226-4946-86C4-0B214AE27B84}|TrainMapApplication\\TrainMapApplication.csproj|c:\\users\\04joh\\source\\repos\\algofuckingrithm\\trainmapapplication\\smartfunction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,17 +30,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "SmartFunction.cs",
               "DocumentMoniker": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\TrainMapApplication\\SmartFunction.cs",
               "RelativeDocumentMoniker": "TrainMapApplication\\SmartFunction.cs",
               "ToolTip": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\TrainMapApplication\\SmartFunction.cs",
               "RelativeToolTip": "TrainMapApplication\\SmartFunction.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAABqPQYAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAADgBQAAAAAgwAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-23T05:29:17.17Z",
               "IsPinned": true,
@@ -44,13 +48,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "README.md",
               "DocumentMoniker": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\README.md",
               "RelativeDocumentMoniker": "README.md",
               "ToolTip": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\README.md",
               "RelativeToolTip": "README.md",
-              "ViewState": "AgIAAEcAAABARP////8HwFEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
               "WhenOpened": "2025-04-17T06:31:14.171Z",
               "IsPinned": true,
@@ -58,16 +62,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\TrainMapApplication\\Program.cs",
               "RelativeDocumentMoniker": "TrainMapApplication\\Program.cs",
               "ToolTip": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\TrainMapApplication\\Program.cs",
               "RelativeToolTip": "TrainMapApplication\\Program.cs",
-              "ViewState": "AgIAABYAAAAA5v////8fwB8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAOUBAAAAAAAAAAAIwPoBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-04T06:21:53.148Z",
               "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Progress_Log.md",
+              "DocumentMoniker": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\TrainMapApplication\\Progress_Log.md",
+              "RelativeDocumentMoniker": "TrainMapApplication\\Progress_Log.md",
+              "ToolTip": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\TrainMapApplication\\Progress_Log.md*",
+              "RelativeToolTip": "TrainMapApplication\\Progress_Log.md*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-04-23T10:44:15.278Z",
               "EditorCaption": ""
             },
             {
@@ -82,7 +99,7 @@
               "RelativeDocumentMoniker": "TrainMapApplication\\Maps.cs",
               "ToolTip": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\TrainMapApplication\\Maps.cs",
               "RelativeToolTip": "TrainMapApplication\\Maps.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAA+/////8PwBAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-23T05:14:54.147Z",
               "EditorCaption": ""
