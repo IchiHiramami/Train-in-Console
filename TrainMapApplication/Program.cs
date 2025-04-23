@@ -58,14 +58,12 @@ class MetroManilaCommuteApp
     static void origin_destinationHandler()
     {
         Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine("Where are you starting from? (station or landmark)");
-        string startInput = Console.ReadLine().Trim();
+        Console.WriteLine("Where are you starting from? (station or landmark)"); string startInput = Console.ReadLine().Trim();
         string start = GetLocationFromUser(startInput);
         if (start == null) return;
 
         Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine("Where is your destination? (station or landmark)");
-        string destInput = Console.ReadLine().Trim();
+        Console.WriteLine("Where is your destination? (station or landmark)"); string destInput = Console.ReadLine().Trim();
         string destination = GetLocationFromUser(destInput);
         if (destination == null) return;
 
@@ -96,25 +94,22 @@ class MetroManilaCommuteApp
 
                     if (landmarkResults.Count == 0)
                     {
-                        // If no matches found, suggest alternatives using Levenshtein Distance
                         List<string> allLandmarks = new List<string>();
 
-                        // Collect landmarks from all stations in all train lines
                         foreach (var line in Maps.trainLines)
                         {
                             foreach (var station in line.Value)
                             {
-                                allLandmarks.AddRange(station.Value);  // Add landmarks associated with the station
+                                allLandmarks.AddRange(station.Value);
                             }
                         }
 
-                        // Suggest landmarks based on Levenshtein distance
                         var suggestedLandmarks = allLandmarks
-                                                  .Distinct()  // Remove duplicate landmarks
+                                                  .Distinct()  
                                                   .Select(landmark => new { Landmark = landmark, Distance = Xavier.LevenshteinDistance(landmarkInput.ToLower(), landmark.ToLower()) })
-                                                  .Where(x => x.Distance <= 3)  // Allow some tolerance for typo
+                                                  .Where(x => x.Distance <= 3)  
                                                   .OrderBy(x => x.Distance)
-                                                  .Take(5)  // Limit suggestions to top 5
+                                                  .Take(5) 
                                                   .ToList();
 
                         if (suggestedLandmarks.Any())
@@ -152,7 +147,7 @@ class MetroManilaCommuteApp
 
                 case "2":
                     Console.Write("Enter a station to list its landmarks: ");
-                    string stationInput = Console.ReadLine().Trim().ToLower(); // Normalize input
+                    string stationInput = Console.ReadLine().Trim().ToLower();
 
                     bool found = false;
 
@@ -202,16 +197,16 @@ class MetroManilaCommuteApp
                         int count = 0;
                         foreach (var station in line.Value.Keys)
                         {
-                            Console.Write($"{station.PadRight(30)}"); // Adjust the number to control column width
+                            Console.Write($"{station.PadRight(30)}");
                             count++;
 
-                            if (count % 3 == 0) // Wrap after 3 stations per line
+                            if (count % 3 == 0)
                                 Console.WriteLine();
                         }
 
                         if (count % 3 != 0)
-                            Console.WriteLine(); // Ensure line break after each section
-                        Console.WriteLine(); // Extra spacing between lines
+                            Console.WriteLine();
+                            Console.WriteLine();
                     }
 
                     Console.ResetColor();
@@ -461,13 +456,11 @@ class MetroManilaCommuteApp
             Console.Clear();
             Console.WriteLine("Ride Progress:\n");
 
-            // Loop through the route and display each station's status
             for (int j = 0; j < route.Count; j++)
             {
                 string station = route[j];
                 bool isTransfer = Maps.transferPoints.ContainsKey(station);
 
-                // Adjust colors based on the station's status
                 if (j == 0 || j == route.Count - 1)
                 {
                     Console.ForegroundColor = ConsoleColor.Red; // Start/end
@@ -485,7 +478,6 @@ class MetroManilaCommuteApp
                     Console.ForegroundColor = ConsoleColor.White; // Upcoming
                 }
 
-                // Add (Transfer) tag if it's a transfer point
                 string label = isTransfer ? $"{station} (Transfer)" : station;
                 Console.Write($"**{label}**");
 
@@ -495,7 +487,6 @@ class MetroManilaCommuteApp
 
             Console.ResetColor();
 
-            // Calculate progress and display a progress bar
             double progress = ((i + 1) / (double)route.Count) * 100;
             int barLength = 20;
             int filled = (int)(progress / 100 * barLength);
@@ -505,7 +496,7 @@ class MetroManilaCommuteApp
 
             if (i < route.Count - 1)
             {
-                Thread.Sleep(1000); // Delay to simulate the ride
+                Thread.Sleep(1000); //This is here to simulate that the train passes through the stations. In real-application, updates in relationship to either geolocation data or flag points located within station (if such implementation did exist)
             }
             else
             {

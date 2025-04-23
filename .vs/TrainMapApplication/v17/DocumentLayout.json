@@ -39,8 +39,7 @@
               "ViewState": "AgIAAAMAAAAAAAAAAABqPQYAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-23T05:29:17.17Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -50,7 +49,7 @@
               "RelativeDocumentMoniker": "README.md",
               "ToolTip": "C:\\Users\\04joh\\source\\repos\\AlgoFuckingRithm\\README.md",
               "RelativeToolTip": "README.md",
-              "ViewState": "AgIAAEcAAABARP////8HwFEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
               "WhenOpened": "2025-04-17T06:31:14.171Z",
               "IsPinned": true,
@@ -67,8 +66,7 @@
               "ViewState": "AgIAABYAAAAA5v////8fwB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-04T06:21:53.148Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -84,8 +82,7 @@
               "RelativeToolTip": "TrainMapApplication\\Maps.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T05:14:54.147Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-23T05:14:54.147Z"
             }
           ]
         }
