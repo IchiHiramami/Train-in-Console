@@ -1,61 +1,196 @@
-This ReadMe File is A.I. Generated for the sole purpose of keeping track what has already been implemented so far. 
+# Manila Train-App In A Console
 
-# Metro Manila Train Commute App
+### Option 1: Display Train Map
 
-## Overview
-The **Metro Manila Train Commute App** is designed to help commuters plan their trips, view train maps, and search for stations or landmarks along the Metro Manila rail system. The app provides features to simulate travel progress, find routes, and display relevant transit information.
+This option shows the map of all the Metro Manila train lines.
 
-## Core Features
+- **Simulated Response**:
 
-1. **Display Train Map**: 
-   - Shows the Metro Manila train lines and stations.
+```
+                                             [Antipolo]
+                                                |
+                                        [Marikina-Pasig]
+                                                 |
+                                            [Santolan]
+                                                  |
+                                            [Katipunan]
+                                                  |
+                                             [Anonas]=======
+                                                  |     |||
+         North Ave -- Quezon Ave -- GMA Kamuning -- Araneta Cubao ---------- Santolan-Annapolis ---------- Ortigas ----------- Shaw ----------- Boni -----------|
+                                                  |                                                                                                             |
+[FPJ]                                   [Betty-Go Belmonte]                                                                                                 [Buendia]
+   |                                              |                                                                                                             |
+[Balintawak]                                  [Gilmore]                                                                                                         |
+   |                                              |                                                                                                             |
+   |                                          [J. Ruiz]                                                                                                      [Ayala]
+[Monumento]                                       |                                                                                                             |
+   |                                          [V. Mapa]                                                                                                         |
+   |                                              |                                                                                                             |
+[5th Avenue]                                   [Pureza]                                                                                                   [Magallanes]
+   |                                              |                                                                                                             |
+   |                                          [Legarda]                                                                                                         |
+[R. Papa]                                         |                                                                                                             |
+   |                                           [Recto]                                                                                                    [Taft Avenue]
+   |                                             |||                                                                                                          |||
+A. Santos -- Blumentritt -- Tayuman -- Bambang -- Doroteo Jose -- Carriedo -- Central -- UN  -- Pedro Gil -- Quirino -- Vito Cruz -- Gil Puyat -- Libertad -- EDSA -- Baclaran -- Redemptorist
 
-2. **Plan Your Commute**:
-   - Users can input a starting station/landmark and a destination to get the best travel route.
-   - Supports both direct routes and routes with transfers between different train lines.
+Press any key to return
+```
 
-3. **Find Landmark or Station**:
-   - Search for stations or landmarks by name.
-   - Offers fuzzy search results for partial or approximate matches.
 
-4. **Travel Simulation**:
-   - Once a route is found, the app simulates the commute by showing the stations and progress in real-time with an interactive progress bar.
+### Option 2: Plan Your Commute
 
-## Possible To-Do List
-1. **Enhance User Interface**:
-   - Implement a graphical user interface (GUI) for better user interaction.
-   - Add station and landmark images to improve user experience.
+This option allows users to plan their commute by specifying a starting station/landmark and a destination.
 
-2. **Real-Time Updates**:
-   - Integrate real-time data for train schedules and delays.
+- **Simulated Response**:
+    ```
+    Where are you starting from? (station or landmark)
+    [User Input]: "Taft Station"
+    
+    Where is your destination? (station or landmark)
+    [User Input]: "Recto Station"
+    
+    Calculating route from Taft Station to Recto Station...
+    
+    Travel directly from Taft Station to Recto Station on the LRT 1 line.
+    ```
 
-3. **Save Favorite Routes**:
-   - Allow users to save their favorite routes or stations for quick access.
+### Option 3: Find Landmark or Station
 
-4. **Improve Route Suggestions**:
-   - Enhance the route suggestion algorithm to include walking distance between stations and landmarks.
+This option allows users to search for landmarks or stations. It includes the following sub-options:
 
-5. **Multilingual Support**:
-   - Add language options (e.g., Filipino and English) to cater to a wider audience.
+1. **Search station near a landmark**
+2. **Show all landmarks near a station**
+3. **Show list of all stations per line**
+4. **Go back to main menu**
 
-6. **Notifications for Train Closures**:
-   - Notify users of unexpected closures or delays on their planned route.
+#### Sub-option 1: Search Station Near a Landmark
 
-7. **Landmark to Station Finder**:
-   - Add functionality to search for stations by entering landmarks.
+- **Simulated Response**:
+    ```
+    Enter a landmark to search: SM Mall of Asia
+    
+    Possible matches:
+    - SM Mall of Asia
+    Press any key to return...
+    ```
 
-8. **Progress Bar Redesign**:
-   - Revamp the progress bar to provide a smoother and more visually engaging experience during travel simulations.
+#### Sub-option 2: Show All Landmarks Near a Station
 
-9. **More Features**:
-   - Add other enhancements based on user feedback and ongoing development.
+- **Simulated Response**:
+    ```
+    Enter a station to list its landmarks: Taft Station
+    
+    Landmarks near Taft Station on LRT 1:
+    - Mall of Asia
+    - SMX Convention Center
+    Press any key to return...
+    ```
 
-## Known Issues
+#### Sub-option 3: Show List of All Stations per Line
 
-1. **MRT to LRT Transfer Issue**:
-   - The transfer between MRT and LRT lines is not currently working as expected. This feature needs further improvement to ensure smooth transfer point handling between lines.
+- **Simulated Response**:
+    ```
+    Stations per train line:
+    ---------------------------
+    LRT 1 Line:
+    - Baclaran                 - EDSA
+    - Libertad                 - Taft Station
+    (etc.)
 
-## Future Improvements
-- Populate and update the database with accurate and real-time data.
-- Enhance the transfer point logic to handle more complex transfers and routing.
+    Press any key to return...
+    ```
 
+#### Sub-option 4: Go Back to Main Menu
+
+- **Simulated Response**:
+    ```
+    Returning to the main menu...
+    ```
+
+---
+
+## Route Calculation
+
+When planning a commute, the app will calculate the route between the origin and destination.
+
+1. If the start and destination are on the same train line, the app will show the route directly between the two stations.
+2. If the start and destination are on different lines, the app will find the nearest transfer points and suggest the best route, including the stations to transfer at.
+
+- **Simulated Response**:
+    ```
+    Calculating route from Taft Station to Recto Station...
+    
+    Travel directly from Taft Station to Recto Station on the LRT 1 line.
+    ```
+
+---
+
+## Transfer Points
+
+If your commute involves transferring between different train lines, the app will show the transfer points.
+
+- **Simulated Response**:
+    ```
+    Take LRT 1 from Taft Station to Araneta Center Cubao, then transfer to MRT 3 at Araneta Center Cubao to reach Recto Station.
+    ```
+
+---
+
+## Station and Landmark Search
+
+When you search for a station or landmark, the app will attempt to find matching locations. If no exact match is found, it will suggest similar locations based on fuzzy search algorithms.
+
+- **Simulated Response**:
+    ```
+    No exact matches found. Did you mean one of these?
+    1. Taft Station
+    2. Taft Avenue
+    Please select a number from the suggestions (1 to N):
+    [User Input]: 1
+    
+    You selected Taft Station.
+    ```
+
+---
+
+## Ride Progress
+
+Once you begin your ride, the app will simulate your travel through the stations, showing your current station, passed stations, and upcoming stations. A progress bar will indicate your ride progress.
+
+- **Simulated Response**:
+    ```
+    Ride Progress:
+    [**Taft Station** -> Mall of Asia -> SMX Convention Center]
+
+    Progress: [######----------] 30%
+    ```
+
+---
+
+## Exit
+
+To exit the app, simply choose option 4 from the main menu.
+
+- **Simulated Response**:
+    ```
+    Exiting the app...
+    ```
+
+---
+
+## Error Handling
+
+If the user enters an invalid option or input, the app will display an error message and prompt the user to try again.
+
+- **Simulated Response**:
+    ```
+    Invalid choice. Please select a valid number.
+    ```
+
+---
+
+## Conclusion
+
+The **Metro Manila Commuter App** is a powerful tool for navigating the Metro Manila train system. With features for planning your commute, finding landmarks, and more, it makes getting around the city easier and more efficient.
